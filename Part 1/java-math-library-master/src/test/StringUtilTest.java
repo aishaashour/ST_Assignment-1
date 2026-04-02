@@ -1,4 +1,4 @@
-package test.java.de.tilman_neumann.util;
+package test;
 
 import static org.junit.Assert.*;
 import de.tilman_neumann.util.StringUtil;

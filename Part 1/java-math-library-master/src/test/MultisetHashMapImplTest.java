@@ -1,4 +1,4 @@
-package test.java.de.tilman_neumann.util;
+package test;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import de.tilman_neumann.util.Multiset_HashMapImpl;
