@@ -61,7 +61,7 @@ public class MainScrubberTest {
         IScrubDigits mockDigits = mock(IScrubDigits.class);
         IScrubEmails mockEmails = mock(IScrubEmails.class);
         MainScrubber scrubber = new MainScrubber(mockDigits, mockEmails);
-        
+
         assertThrows(NullPointerException.class, () -> {scrubber.scrub(null, ONLY_DIGITS);});
     }
 

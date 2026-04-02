@@ -39,7 +39,7 @@ public class EmailScrubberTest {
         assertThrows(IllegalArgumentException.class, () -> {emailScrubber.scrub("   ");} );
     }
 
-    //test 5 : if email has numbers (either than 0) (will fail , there's a mistake in the regex of the email)
+    //test 6 : if email has numbers (either than 0) (will fail , there's a mistake in the regex of the email)
     @Test
     void testEmailScrub_EmailWithNumbers(){
         String email = emailScrubber.scrub("contact me at Shazawagdy2004@gmail.com");
