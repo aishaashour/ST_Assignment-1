@@ -26,6 +26,15 @@ public class MultisetHashMapImplTest {
         set.add("a", -2);
         assertEquals(3, (int)set.get("a"));
     }
+    @Test
+    public void testAddNegativeMultBug() {
+        Multiset_HashMapImpl<String> set = new Multiset_HashMapImpl<>();
+        set.add("a", 2);
+
+        int old = set.add("a", -5);
+
+        assertEquals(0, old); // fails (returns 2)
+    }
     ///-----------------------------------------------------------------------------------
     /// Test addAll (3 functions)
     @Test
@@ -135,6 +144,15 @@ public class MultisetHashMapImplTest {
         set.add("a", 3);
         set.removeAll("a");
         assertNull(set.get("a"));
+    }
+    @Test
+    public void testRemoveNegativeMultBug() {
+        Multiset_HashMapImpl<String> set = new Multiset_HashMapImpl<>();
+        set.add("a", 2);
+
+        set.remove("a", -1);
+
+        assertEquals(2, (int)set.get("a")); // fails → becomes 3
     }
     ///---------------------------------------------------------------------------------------
     /// Test intersect (1 function)
@@ -259,6 +277,7 @@ public class MultisetHashMapImplTest {
 
         assertFalse(result.contains(", }"));
     }
+
     ///--------------------------------------------------------------------------------------------
     /// test equal
     /**

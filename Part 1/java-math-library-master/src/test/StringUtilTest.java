@@ -42,6 +42,12 @@ public class StringUtilTest{
     public void testRepeatEmpty() {
         assertEquals("", StringUtil.repeat("", 5));
     }
+
+    @Test
+    public void testRepeatWithSpaces() {
+        assertEquals("a a a ", StringUtil.repeat("a ", 3));
+    }
+
     ///---------------------------------------------------------------------------------------------
     /// test StringUtil.formatLeft
     /**
@@ -80,6 +86,18 @@ public class StringUtilTest{
     public void testFormatLeftEmptyMask() {
         assertEquals("abc", StringUtil.formatLeft("abc", ""));
     }
+    @Test
+    public void testFormatLeftBothNull() {
+        assertEquals("", StringUtil.formatLeft(null, null));
+    }
+    @Test
+    public void testFormatLeftBothNullBug() {
+        assertNull(StringUtil.formatLeft(null, null));
+    }
+    @Test
+    public void testFormatLeftBoundaryPlusOne() {
+        assertEquals("abc4", StringUtil.formatLeft("abc", "1234"));
+    }
     ///--------------------------------------------------------------------------------------------------
     /// test StringUtil.formatRight
     @Test
@@ -109,5 +127,9 @@ public class StringUtilTest{
     @Test
     public void testFormatRightEmptyMask() {
         assertEquals("abc", StringUtil.formatRight("abc", ""));
+    }
+    @Test
+    public void testFormatRightBothNullBug() {
+        assertNull(StringUtil.formatRight(null, null));
     }
 }
