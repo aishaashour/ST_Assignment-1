@@ -9,9 +9,9 @@ public class StringUtilTest{
     /**
             Partitions
             •	s: null, empty, normal string
-            •	n: n <= 0, n = 1, n > 1
+            •	n: n < 0, n = 0, n = 1, n > 1
             Boundary Values
-            •	n = -1, 0, 1
+            •	n = -1, 0, 1, 2
      */
     @Test
     public void testRepeatNormal() {
@@ -47,8 +47,8 @@ public class StringUtilTest{
     /// test StringUtil.formatLeft
     /**
             Partitions
-        •	s: null, shorter, equal, longer
-        •	mask: null, empty, normal
+        •	s: null, empty, shorter, equal, longer
+        •	mask: null, empty, longer, equal, shorter
         Boundary Values
         •	s.length = mask.length
         •	s.length = mask.length ± 1
@@ -96,6 +96,14 @@ public class StringUtilTest{
     }
     ///--------------------------------------------------------------------------------------------------
     /// test StringUtil.formatRight
+    /**
+        Partitions
+        •	s: null, empty, shorter, equal, longer
+        •	mask: null, empty, longer, equal, shorter
+        Boundary Values
+        •	s.length = mask.length
+        •	s.length = mask.length ± 1
+    */
     @Test
     public void testFormatRightShorter() {
         assertEquals("123abc", StringUtil.formatRight("abc", "123456"));
