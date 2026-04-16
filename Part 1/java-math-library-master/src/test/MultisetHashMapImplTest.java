@@ -145,7 +145,7 @@ public class MultisetHashMapImplTest {
      */
 
     @Test
-    public void testIntersectOvelap() {
+    public void testIntersectOverlap() {
         Multiset_HashMapImpl<String> set1 = new Multiset_HashMapImpl<>();
         Multiset_HashMapImpl<String> set2 = new Multiset_HashMapImpl<>();
 

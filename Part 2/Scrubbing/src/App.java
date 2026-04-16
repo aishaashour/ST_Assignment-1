@@ -16,6 +16,10 @@ public class App {
         System.out.println(digitScrubber.scrub("Contact me at 1111"));
         System.out.println(digitScrubber.scrub("Contact me at 1111$"));
         System.out.println(scrubber.scrub("Contact me at 1111",ONLY_DIGITS));
+        System.out.println(emailScrubber.scrub("Contact me at john.doe0@example.com"));
+        System.out.println(emailScrubber.scrub("Contact me at john.doe9@example.com"));
+
+
 
     }
 }
