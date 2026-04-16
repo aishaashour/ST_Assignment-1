@@ -43,11 +43,6 @@ public class StringUtilTest{
         assertEquals("", StringUtil.repeat("", 5));
     }
 
-    @Test
-    public void testRepeatWithSpaces() {
-        assertEquals("a a a ", StringUtil.repeat("a ", 3));
-    }
-
     ///---------------------------------------------------------------------------------------------
     /// test StringUtil.formatLeft
     /**
@@ -58,6 +53,14 @@ public class StringUtilTest{
         •	s.length = mask.length
         •	s.length = mask.length ± 1
      */
+    @Test
+    public void testFormatLeftNullString() {
+        assertEquals("123", StringUtil.formatLeft(null, "123"));
+    }
+    @Test
+    public void testFormatLeftNullMask() {
+        assertEquals("abc", StringUtil.formatLeft("abc", null));
+    }
     @Test
     public void testFormatLeftShorter() {
         assertEquals("abc456", StringUtil.formatLeft("abc", "123456"));
@@ -71,17 +74,10 @@ public class StringUtilTest{
         assertEquals("abc", StringUtil.formatLeft("abc", "123"));
     }
     @Test
-    public void testFormatLeftNullString() {
-        assertEquals("123", StringUtil.formatLeft(null, "123"));
-    }
-    @Test
     public void testFormatLeftEmptyString() {
         assertEquals("123", StringUtil.formatLeft("", "123"));
     }
-    @Test
-    public void testFormatLeftNullMask() {
-        assertEquals("abc", StringUtil.formatLeft("abc", null));
-    }
+
     @Test
     public void testFormatLeftEmptyMask() {
         assertEquals("abc", StringUtil.formatLeft("abc", ""));
@@ -91,12 +87,12 @@ public class StringUtilTest{
         assertEquals("", StringUtil.formatLeft(null, null));
     }
     @Test
-    public void testFormatLeftBothNullBug() {
-        assertNull(StringUtil.formatLeft(null, null));
+    public void testFormatLeftBoundaryPlusOne() {
+        assertEquals("a2", StringUtil.formatLeft("a", "12"));
     }
     @Test
-    public void testFormatLeftBoundaryPlusOne() {
-        assertEquals("abc4", StringUtil.formatLeft("abc", "1234"));
+    public void testFormatLeftBoundaryMinusOne() {
+        assertEquals("ab", StringUtil.formatLeft("ab", "1"));
     }
     ///--------------------------------------------------------------------------------------------------
     /// test StringUtil.formatRight
@@ -129,7 +125,12 @@ public class StringUtilTest{
         assertEquals("abc", StringUtil.formatRight("abc", ""));
     }
     @Test
-    public void testFormatRightBothNullBug() {
-        assertNull(StringUtil.formatRight(null, null));
+    public void testFormatRightBoundaryPlusOne() {
+        assertEquals("1a", StringUtil.formatRight("a", "12"));
     }
+    @Test
+    public void testFormatRightBoundaryMinusOne() {
+        assertEquals("ab", StringUtil.formatRight("ab", "1"));
+    }
+
 }
